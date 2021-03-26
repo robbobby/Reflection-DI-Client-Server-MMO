@@ -239,7 +239,11 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Business\IUserRepository.cs" />
+        <Compile Include="Business\UserRepository.cs" />
         <Compile Include="ConfigurationService.cs" />
+        <Compile Include="Models\User\CharacterModel.cs" />
+        <Compile Include="Models\User\UserModel.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Service\IPackageDispatcher.cs" />
@@ -252,11 +256,6 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="NLog.xsd" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Business" />
-      <Folder Include="Logs" />
-      <Folder Include="Models" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\BuggyNet\BuggyNet.csproj">
