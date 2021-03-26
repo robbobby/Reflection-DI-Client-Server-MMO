@@ -196,10 +196,10 @@
         <Compile Include="Network\PackageParser\IPackageParser.cs" />
         <Compile Include="Network\PackageParser\Package.cs" />
         <Compile Include="Network\PackageParser\PackageParser.cs" />
-        <Compile Include="Network\Packages\KeepAlivePackage.cs" />
-        <Compile Include="Network\Packages\LoginPackage.cs" />
-        <Compile Include="Network\Packages\PackageIds.cs" />
-        <Compile Include="Network\Packages\CharacterClass.cs" />
+        <Compile Include="Network\Packet\KeepAlivePackage.cs" />
+        <Compile Include="Network\Packet\LoginPackage.cs" />
+        <Compile Include="Network\Packet\PackageIds.cs" />
+        <Compile Include="Network\Packet\CharacterClass.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
