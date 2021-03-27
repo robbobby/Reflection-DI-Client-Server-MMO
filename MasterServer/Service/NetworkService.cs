@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MasterServer.Service {
     class NetworkService {
-        private readonly object locker;
+        private readonly object locker = new object();
         private List<ClientConnection> clients = new List<ClientConnection>();
         private List<ClientConnection> invalidConnections = new List<ClientConnection>();
 
@@ -49,8 +49,9 @@ namespace MasterServer.Service {
         }
         
         public void Start() {
-            if (listenerWorkerThread != null && listenerWorkerThread.ThreadState == ThreadState.Running)
+            if (listenerWorkerThread != null && listenerWorkerThread.ThreadState == ThreadState.Running) {
                 return;
+            }
             listenerWorkerThread = new Thread(async () => {
                 IsRunning = true;
                 tcpListener.Start();

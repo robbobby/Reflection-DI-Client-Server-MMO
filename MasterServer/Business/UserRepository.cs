@@ -82,7 +82,6 @@ namespace MasterServer.Business {
                 } else {
                     logger.LogInformation("Username exists");
                     return PasswordOk(user, password);
-                    return (true, true, user.Id);
                 }
             }
         }
