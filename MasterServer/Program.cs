@@ -17,7 +17,7 @@ namespace MasterServer {
                 serviceDescriptors.AddScoped<IUserRepository, UserRepository>();
             });
             configurationService.Provider.GetRequiredService<NetworkService>().Start();
-            configurationService.Provider.GetRequiredService<PackageDispatcher>().Start();
+            configurationService.Provider.GetRequiredService<IPackageDispatcher>().Start();
             Console.ReadLine();
         }
     }

@@ -16,7 +16,7 @@ namespace MasterServer.Service {
         private List<ClientConnection> clients = new List<ClientConnection>();
         private List<ClientConnection> invalidConnections = new List<ClientConnection>();
 
-        private int recievePacktageInterationCounter = 0;
+        private int receivePackageInterationCounter = 0;
         
 
         private TcpListener tcpListener;
@@ -76,8 +76,8 @@ namespace MasterServer.Service {
                     await Task.Delay(1);
                     if (IsRunning)
                         lock (locker) {
-                            if (++recievePacktageInterationCounter == 1000) {
-                                recievePacktageInterationCounter = 0;
+                            if (++receivePackageInterationCounter == 1000) {
+                                receivePackageInterationCounter = 0;
                                 foreach (var client in clients) {
                                     try {
                                         packageParser.ParsePackageToStream(new KeepAlivePackage(), client.Writer);

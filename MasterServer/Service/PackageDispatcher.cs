@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MasterServer.Service {
     public class PackageDispatcher : IPackageDispatcher {
-        private readonly ILogger<PackageDispatcher> logger;
+        private readonly ILogger<IPackageDispatcher> logger;
         private readonly IServiceProvider serviceProvider;
         private readonly IPackageParser packageParser;
         
@@ -17,7 +17,7 @@ namespace MasterServer.Service {
         
         public bool IsRunning { get; private set; }
 
-        public PackageDispatcher(ILogger<PackageDispatcher> logger, IServiceProvider serviceProvider, IPackageParser packageParser) {
+        public PackageDispatcher(ILogger<IPackageDispatcher> logger, IServiceProvider serviceProvider, IPackageParser packageParser) {
             this.logger = logger;
             this.serviceProvider = serviceProvider;
             this.packageParser = packageParser;
