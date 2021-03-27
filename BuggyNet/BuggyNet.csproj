@@ -5,7 +5,7 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
         <ProjectGuid>{19C97AE7-D55A-4F27-AA20-E059B1E0704B}</ProjectGuid>
-        <OutputType>Exe</OutputType>
+        <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>BuggyNet</RootNamespace>
         <AssemblyName>BuggyNet</AssemblyName>
@@ -200,7 +200,6 @@
         <Compile Include="Network\Packet\LoginPackage.cs" />
         <Compile Include="Network\Packet\PackageIds.cs" />
         <Compile Include="Network\Packet\CharacterClass.cs" />
-        <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

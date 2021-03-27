@@ -3,7 +3,9 @@ using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog;
 using NLog.Extensions.Logging;
+using ILogger = NLog.ILogger;
 
 namespace MasterServer {
     public class ConfigurationService {
@@ -16,6 +18,7 @@ namespace MasterServer {
             ConfigurationService instance = new ConfigurationService();
 
             IServiceCollection descriptors = CreateDefaultServiceDescriptors();
+
             handler(descriptors);
             instance.Provider = descriptors.BuildServiceProvider();
             return instance;
@@ -24,12 +27,14 @@ namespace MasterServer {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("Config.json").Build();
             IServiceCollection serviceDescriptors = new ServiceCollection();
-            serviceDescriptors.AddLogging(configure => {
-                configure.AddConsole();
+
+            serviceDescriptors.AddLogging(configure => configure.AddConsole());
+            
                 
-            });
             serviceDescriptors.AddSingleton<IConfigurationRoot>(configuration);
             return serviceDescriptors;
         }
+        
+        
     }
 }
