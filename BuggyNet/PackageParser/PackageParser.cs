@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using BuggyNet.Network.Packages;
+using BuggyNet.Package;
 using Microsoft.Extensions.Logging;
 
-namespace BuggyNet.Network.PackageParser {
+namespace BuggyNet.PackageParser {
     public class PackageParser : IPackageParser {
 
         private readonly ILogger<PackageParser> logger;
@@ -18,7 +18,7 @@ namespace BuggyNet.Network.PackageParser {
         private void ResolvePackage()
         {
             IEnumerable<Type> packageClasses = GetType().Assembly.GetTypes().
-                Where(x => x.IsSubclassOf(typeof(Package)));
+                Where(x => x.IsSubclassOf(typeof(BuggyNet.PackageParser.Package)));
             // ReSharper disable once InconsistentNaming
             foreach (Type _class in packageClasses)
             {
@@ -30,12 +30,12 @@ namespace BuggyNet.Network.PackageParser {
             logger.LogInformation($"Scanned {packages.Count} packages");
         }
 
-        public Package ParsePackageFromStream(BinaryReader reader)
+        public BuggyNet.PackageParser.Package ParsePackageFromStream(BinaryReader reader)
         {
             var packageId = (PackageIds)reader.ReadUInt32();
             if (!packages.TryGetValue(packageId, out Type type))
                 throw new InvalidOperationException("Package is unknown");
-            if (Activator.CreateInstance(type) is Package package) {
+            if (Activator.CreateInstance(type) is BuggyNet.PackageParser.Package package) {
                 package.DeserialiseFromStream(reader);
                 logger.LogInformation($"Received package from stream: {package.GetType()}");
                 return package;
@@ -43,7 +43,7 @@ namespace BuggyNet.Network.PackageParser {
             throw new InvalidOperationException("Package is unknown");
         }
 
-        public void ParsePackageToStream(Package package, BinaryWriter writer) {
+        public void ParsePackageToStream(BuggyNet.PackageParser.Package package, BinaryWriter writer) {
             logger.LogInformation($"Write package to stream type: {package.GetType()}");
             package.SerialiseToStream(writer);
             writer.Flush();

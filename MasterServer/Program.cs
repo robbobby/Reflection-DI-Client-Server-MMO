@@ -1,10 +1,8 @@
 ﻿using System;
-using System.IO;
-using BuggyNet.Network.PackageParser;
+using BuggyNet.PackageParser;
 using MasterServer.Business;
 using MasterServer.Service;
 using Microsoft.Extensions.DependencyInjection;
-using NLog;
 
 namespace MasterServer {
     internal class Program {

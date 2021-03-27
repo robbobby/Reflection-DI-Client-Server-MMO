@@ -1,6 +1,6 @@
 using System;
 
-namespace BuggyNet.Network.Packages {
+namespace BuggyNet.Package {
     public enum PackageIds : UInt32 {
         LoginRequest = 0x001,
         LoginResponse = 0x002,

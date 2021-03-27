@@ -1,14 +1,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using BuggyNet.Network;
+using BuggyNet;
 using Dapper;
 using MasterServer.Models.User;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MySql.Data.MySqlClient;
-using NLog;
-using ILogger = NLog.ILogger;
 
 namespace MasterServer.Business {
     class UserRepository : IUserRepository {

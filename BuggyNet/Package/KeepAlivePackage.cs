@@ -1,9 +1,9 @@
 using System.IO;
-using BuggyNet.Network.PackageParser;
+using BuggyNet.PackageParser;
 
-namespace BuggyNet.Network.Packages {
+namespace BuggyNet.Package {
     [PackageRpc(PackageIds.KeepAlive)]
-    public class KeepAlivePackage : Package {
+    public class KeepAlivePackage : PackageParser.Package {
 
         public KeepAlivePackage() : base(PackageIds.KeepAlive) {
             

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
-using BuggyNet.Network.PackageParser;
+using BuggyNet.PackageParser;
 using MasterServer.Service.ServiceModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

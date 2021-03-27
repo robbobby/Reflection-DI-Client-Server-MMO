@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using BuggyNet.Network.Packages;
+using BuggyNet.Package;
 
-namespace BuggyNet.Network.PackageParser {
+namespace BuggyNet.PackageParser {
     public abstract class Package {
         public PackageIds PackageId { get; }
         

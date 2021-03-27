@@ -53,6 +53,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ClientManager.cs" />
+     <Compile Include="Assets\Scripts\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\ClientConnection.cs" />
+     <Compile Include="Assets\Scripts\ConfigurationService.cs" />
+     <Compile Include="Assets\Scripts\GameContext.cs" />
      <None Include="Assets\DEPS\Microsoft.Extensions.FileProviders.Physical.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\DEPS\System.ValueTuple.xml" />
@@ -384,6 +388,9 @@
  </Reference>
  <Reference Include="System.Security.Cryptography.Algorithms">
  <HintPath>/Users/rob/Desktop/Reflection-DI-Client-Server-MMO/Assets/DEPS/System.Security.Cryptography.Algorithms.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+ <HintPath>/Users/rob/Desktop/Reflection-DI-Client-Server-MMO/Assets/DEPS/System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
  </Reference>
  <Reference Include="System.Security.Cryptography.Primitives">
  <HintPath>/Users/rob/Desktop/Reflection-DI-Client-Server-MMO/Assets/DEPS/System.Security.Cryptography.Primitives.dll</HintPath>

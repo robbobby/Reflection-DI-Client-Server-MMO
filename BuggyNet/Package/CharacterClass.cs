@@ -1,9 +1,9 @@
 using System.IO;
-using BuggyNet.Network.PackageParser;
+using BuggyNet.PackageParser;
 
-namespace BuggyNet.Network.Packages {
+namespace BuggyNet.Package {
     [PackageRpc(PackageIds.CharacterClassRequest)]
-    public class CharacterClass : Package {
+    public class CharacterClass : PackageParser.Package {
         public int CharacterClassId { get; set; }
         
         public CharacterClass() : base(PackageIds.CharacterClassRequest) {
@@ -18,7 +18,7 @@ namespace BuggyNet.Network.Packages {
     }
 
     [PackageRpc(PackageIds.CharacterClassResponse)]
-    public class CharacterClassResponse : Package {
+    public class CharacterClassResponse : PackageParser.Package {
         public int CharacterClassId { get; set; }
 
         public CharacterClassResponse() : base(PackageIds.CharacterClassResponse) {

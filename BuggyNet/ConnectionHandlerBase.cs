@@ -1,8 +1,8 @@
 using System;
 using System.Reflection;
-using BuggyNet.Network.Packages;
+using BuggyNet.Package;
 
-namespace BuggyNet.Network {
+namespace BuggyNet {
     public abstract class ConnectionHandlerBase<T> {
         
         public void InvokeAction(T connection, object parsedData, PackageIds packageIds) {

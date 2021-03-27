@@ -1,4 +1,4 @@
-namespace BuggyNet.Network {
+namespace BuggyNet {
     public class Encryption {
         public static string GetHashPassword(string password) {
             return BCrypt.Net.BCrypt.HashPassword(password);

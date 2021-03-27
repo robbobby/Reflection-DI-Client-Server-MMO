@@ -1,4 +1,4 @@
-using BuggyNet.Network.PackageParser;
+using BuggyNet.PackageParser;
 using MasterServer.Service.ServiceModels;
 
 namespace MasterServer.Service {
