@@ -11,8 +11,8 @@ namespace MasterServer {
                 serviceDescriptors.AddSingleton<IPackageParser, PackageParser>();
                 serviceDescriptors.AddSingleton<IPackageDispatcher, PackageDispatcher>();
                 
-                serviceDescriptors.AddScoped<IServerConnectionHandler, ServerConnectionHandler>();
-                serviceDescriptors.AddSingleton<INetworkService, NetworkService>();
+                serviceDescriptors.AddScoped<ServerConnectionHandler>();
+                serviceDescriptors.AddSingleton<NetworkService>();
 
                 serviceDescriptors.AddScoped<IUserRepository, UserRepository>();
             });

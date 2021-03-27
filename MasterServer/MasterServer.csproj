@@ -247,7 +247,6 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Service\IPackageDispatcher.cs" />
-        <Compile Include="Service\INetworkService.cs" />
         <Compile Include="Service\IServerConnectionHandler.cs" />
         <Compile Include="Service\NetworkService.cs" />
         <Compile Include="Service\PackageDispatcher.cs" />

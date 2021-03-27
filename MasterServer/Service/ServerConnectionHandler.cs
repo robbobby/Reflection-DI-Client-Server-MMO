@@ -6,7 +6,7 @@ using MasterServer.Service.ServiceModels;
 using Microsoft.Extensions.Logging;
 
 namespace MasterServer.Service {
-    public class ServerConnectionHandler : ConnectionHandlerBase<ClientConnection>, IServerConnectionHandler {
+    public class ServerConnectionHandler : ConnectionHandlerBase<ClientConnection>{
 
         private readonly ILogger<ServerConnectionHandler> logger;
         private readonly IPackageParser packageParser;

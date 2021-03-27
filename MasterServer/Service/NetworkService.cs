@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace MasterServer.Service {
-    class NetworkService : INetworkService {
+    class NetworkService {
         private readonly object locker;
         private List<ClientConnection> clients = new List<ClientConnection>();
         private List<ClientConnection> invalidConnections = new List<ClientConnection>();
@@ -31,7 +31,8 @@ namespace MasterServer.Service {
         private readonly IPackageParser packageParser;
         private readonly IPackageDispatcher packageDispatcher;
         
-        public NetworkService(IConfigurationRoot config, ILogger logger, IServiceProvider serviceProvider, IPackageParser packageParser, IPackageDispatcher packageDispatcher) {
+        public NetworkService(IConfigurationRoot config, ILogger<NetworkService> logger, IServiceProvider serviceProvider, 
+                IPackageParser packageParser, IPackageDispatcher packageDispatcher) {
             tcpListener = new TcpListener(IPAddress.Parse(config.GetValue<string>("host")), config.GetValue<int>("port"));
             IsRunning = false;
             this.logger = logger;
@@ -40,12 +41,13 @@ namespace MasterServer.Service {
             this.packageDispatcher = packageDispatcher;
         }
 
-        public NetworkService(IPAddress address, int port, ILogger logger, IServiceProvider serviceProvider) {
+        public NetworkService(IPAddress address, int port, ILogger<NetworkService> logger, IServiceProvider serviceProvider) {
             tcpListener = new TcpListener(address, port);
             IsRunning = false;
             this.logger = logger;
             this.serviceProvider = serviceProvider;
         }
+        
         public void Start() {
             if (listenerWorkerThread != null && listenerWorkerThread.ThreadState == ThreadState.Running)
                 return;
@@ -64,8 +66,8 @@ namespace MasterServer.Service {
                 }
             }) { IsBackground = true };
             listenerWorkerThread.Start();
-            clientPackageReceiverThread = new Thread(ReceivePackage) { IsBackground = true };
-            clientPackageReceiverThread.Start();
+            // clientPackageReceiverThread = new Thread(ReceivePackage) { IsBackground = true };
+            // clientPackageReceiverThread.Start();
         }
         
         
