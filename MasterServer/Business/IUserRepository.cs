@@ -10,6 +10,7 @@ namespace MasterServer.Business {
         void UpdateUser(UserModel user);
         (bool success, IEnumerable<CharacterModel> charList) GetCharacterList(int userId);
         (bool, int) PasswordOk(string username, string password);
-        bool UserExists(string username);
+        
+        (bool, bool, int) UserExists(string username, string password);
     }
 }

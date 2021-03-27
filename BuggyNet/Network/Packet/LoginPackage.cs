@@ -4,18 +4,18 @@ using BuggyNet.Network.PackageParser;
 namespace BuggyNet.Network.Packages {
     [PackageRpc(PackageIds.LoginRequest)]
     public class LoginRequest : Package {
-        private string username;
-        private string password;
-        
+        public string Username { get; private set; }
+        public string Password { get; private set; }
+
         public LoginRequest() : base(PackageIds.LoginRequest) { }
         public override void DeserialiseFromStream(BinaryReader reader) {
-            username = reader.ReadString();
-            password = reader.ReadString();
+            Username = reader.ReadString();
+            Password = reader.ReadString();
         }
         public override void SerialiseToStream(BinaryWriter writer) {
             writer.Write((uint)PackageId);
-            writer.Write(username);
-            writer.Write(password);
+            writer.Write(Username);
+            writer.Write(Password);
         }
     }
     
@@ -23,16 +23,16 @@ namespace BuggyNet.Network.Packages {
     [PackageRpc(PackageIds.LoginResponse)]
     public class LoginResponse : Package {
 
-        private bool isValidLogin;
+        public bool IsValidLogin;
         
         public LoginResponse() : base(PackageIds.LoginResponse) { }
 
         public override void DeserialiseFromStream(BinaryReader reader) {
-            isValidLogin = reader.ReadBoolean();
+            IsValidLogin = reader.ReadBoolean();
         }
         public override void SerialiseToStream(BinaryWriter writer) {
             writer.Write((uint)PackageId);
-            writer.Write(isValidLogin);
+            writer.Write(IsValidLogin);
         }
 
     }

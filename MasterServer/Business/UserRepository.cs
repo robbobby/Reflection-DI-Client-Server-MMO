@@ -33,7 +33,12 @@ namespace MasterServer.Business {
         }
 
         public void AddUser(string username, string password, string emailAddress) {
-            throw new System.NotImplementedException();
+            using (IDbConnection dbConnection = connection) {
+                string query = @"INSERT INTO Users (user, password, email) 
+                   VALUES (@username, @password, @emailAddress)})";
+                var result = dbConnection.Execute(query, 
+                    new { Username = username, Password = Encryption.GetHashPassword(password), EmailAdress = emailAddress });
+            }
         }
 
         public void DeleteUser(int id) {
@@ -55,10 +60,6 @@ namespace MasterServer.Business {
                 const string query = @"SELECT * FROM User WHERE username=@username AND active='1'";
                 dbConnection.Open();
                 UserModel user = dbConnection.Query<UserModel>(query, new {Username = username}).FirstOrDefault();
-                if (user == null) {
-                    logger.LogInformation("User does not exist");
-                    return (false, -1);
-                }
                 bool validPassword = Encryption.ValidatePassword(password, user.Password);
                     
                 if (validPassword) {
@@ -70,19 +71,30 @@ namespace MasterServer.Business {
             }
         }
 
-        public bool UserExists(string username) {
+        public (bool, bool, int) UserExists(string username, string password) {
             using (IDbConnection dbConnection = connection) {
                 const string query = @"SELECT * FROM User WHERE username=@username AND active='1'";
-                dynamic user = dbConnection.Query(query, new {Username = username}).FirstOrDefault();
+                UserModel user = dbConnection.Query<UserModel>(query, new {Username = username}).FirstOrDefault();
 
-                if (user?.UserName == null) {
+                if (user?.Username == null) {
                     logger.LogInformation("Username doesn't exist");
-                    return false;
+                    return (false, false, -1);
                 } else {
                     logger.LogInformation("Username exists");
-                    return true;
+                    return PasswordOk(user, password);
+                    return (true, true, user.Id);
                 }
             }
+        }
+        private (bool, bool, int) PasswordOk(UserModel user, string password) {
+            bool validPassword = Encryption.ValidatePassword(password, user.Password);
+            
+            if (validPassword) {
+                logger.LogInformation("Password is correct");
+                return (true, true, user.Id);
+            }
+            logger.LogInformation("Password is Incorrect");
+            return (true, false, -1);
         }
     }
 }
