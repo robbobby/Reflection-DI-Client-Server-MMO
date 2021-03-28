@@ -11,13 +11,13 @@ using MySql.Data.MySqlClient;
 namespace MasterServer.Business {
     class UserRepository : IUserRepository {
 
-        private readonly IConfiguration configuration;
+        // private readonly IConfiguration configuration;
         private readonly string connectionString;
         private IDbConnection connection => new MySqlConnection(connectionString);
         private readonly ILogger<IUserRepository> logger;
         
         public UserRepository(IConfiguration configuration, ILogger<UserRepository> logger) {
-            this.configuration = configuration;
+            // this.configuration = configuration;
             this.logger = logger;
             connectionString = configuration.GetConnectionString("MySQL");
         }

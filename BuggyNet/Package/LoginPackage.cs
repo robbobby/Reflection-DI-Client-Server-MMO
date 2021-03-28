@@ -3,7 +3,6 @@ using BuggyNet.PackageParser;
 
 namespace BuggyNet.Package {
     [PackageRpc(PackageIds.LoginRequest)]
-    public class PackageLogin {
         public class LoginRequest : PackageParser.Package {
             public string Username { get; set; }
             public string Password { get; set; }
@@ -33,4 +32,3 @@ namespace BuggyNet.Package {
             }
         }
     }
-}

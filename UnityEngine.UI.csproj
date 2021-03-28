@@ -366,8 +366,116 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/2020.3.1f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="System.Memory">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Memory.dll</HintPath>
+ </Reference>
+ <Reference Include="NLog">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/NLog.dll</HintPath>
+ </Reference>
  <Reference Include="BuggyNet">
- <HintPath>/Users/robert/Dev/MMORPG/Assets/BuggyNet.dll</HintPath>
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/BuggyNet.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Threading.Tasks.Extensions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Threading.Tasks.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Runtime.CompilerServices.Unsafe">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Diagnostics.DiagnosticSource">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Diagnostics.DiagnosticSource.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Security.Cryptography.Algorithms">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Security.Cryptography.Algorithms.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Primitives">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Primitives.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Security.Cryptography.Primitives">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Security.Cryptography.Primitives.dll</HintPath>
+ </Reference>
+ <Reference Include="System.ValueTuple">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.ValueTuple.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Logging.Console">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Logging.Console.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+ </Reference>
+ <Reference Include="System.IO">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.IO.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.FileProviders.Abstractions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Configuration">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Configuration.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Configuration.Json">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Configuration.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Numerics.Vectors">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Numerics.Vectors.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Text.Json">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Text.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Configuration.Binder">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.FileSystemGlobbing">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Options">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Options.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.FileProviders.Physical">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Configuration.FileExtensions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+ </Reference>
+ <Reference Include="BCrypt.Net-Core">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/BCrypt.Net-Core.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Security.Cryptography.Encoding">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Security.Cryptography.Encoding.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Logging">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Logging.dll</HintPath>
+ </Reference>
+ <Reference Include="NLog.Extensions.Logging">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/NLog.Extensions.Logging.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Runtime">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.DependencyInjection">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.DependencyInjection.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Logging.Configuration">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Logging.Configuration.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Buffers">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Buffers.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Text.Encodings.Web">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/System.Text.Encodings.Web.dll</HintPath>
+ </Reference>
+ <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions">
+ <HintPath>/Users/robert/Dev/MMORPG/Assets/DEPS/Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/Applications/Unity/2020.3.1f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

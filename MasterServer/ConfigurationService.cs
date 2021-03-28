@@ -1,5 +1,8 @@
 using System;
 using System.Diagnostics;
+using BuggyNet.PackageParser;
+using MasterServer.Business;
+using MasterServer.Service;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,6 +32,14 @@ namespace MasterServer {
             IServiceCollection serviceDescriptors = new ServiceCollection();
 
             serviceDescriptors.AddLogging(configure => configure.AddConsole());
+            serviceDescriptors.AddSingleton<IPackageParser, PackageParser>();
+            serviceDescriptors.AddSingleton<IPackageDispatcher, PackageDispatcher>();
+                
+            serviceDescriptors.AddScoped<ServerConnectionHandler>();
+            serviceDescriptors.AddSingleton<NetworkService>();
+            
+            serviceDescriptors.AddSingleton<IUserRepository, UserRepository>();
+            serviceDescriptors.AddSingleton<IConfiguration>();
             
                 
             serviceDescriptors.AddSingleton<IConfigurationRoot>(configuration);

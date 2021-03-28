@@ -27,12 +27,12 @@ public class ClientManager : MonoBehaviour {
         string username = usernameInput.text;
         string password = passwordInput.text;
         
-        packageParser.ParsePackageToStream(new PackageLogin.LoginRequest() 
+        packageParser.ParsePackageToStream(new LoginRequest() 
             {Username = username, Password = password}, clientConnection.Writer);
         
-        Debug.Log("Receive Login Response Package");
-        Package packageData = packageParser.ParsePackageFromStream(clientConnection.Reader);
-        Debug.Log($"Receive login response packages Type: {packageData.GetType()} RESULT: {(packageData as PackageLogin.LoginResponse).IsValidLogin}");
+        Debug.Log("Waiting to receive Login Response Package");
+        // Package packageData = packageParser.ParsePackageFromStream(clientConnection.Reader);
+        // Debug.Log($"Receive login response packages Type: {packageData.GetType()} RESULT: {(packageData as LoginResponse).IsValidLogin}");
     }
 
     private void Start() {

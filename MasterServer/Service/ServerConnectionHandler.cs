@@ -22,7 +22,7 @@ namespace MasterServer.Service {
         }
 
         [PackageHandler(PackageIds.LoginRequest)]
-        public void HandleLoginRequest(ClientConnection connection, PackageLogin.LoginRequest parseObjectData) {
+        public void HandleLoginRequest(ClientConnection connection, LoginRequest parseObjectData) {
             logger.LogInformation("Login Request received");
             logger.LogDebug($"Login DATA user: {parseObjectData.Username} PW: {parseObjectData.Password}");
 
@@ -36,7 +36,7 @@ namespace MasterServer.Service {
                 logger.LogInformation("Incorrect password");
                 return;
             }
-            packageParser.ParsePackageToStream(new PackageLogin.LoginResponse() {IsValidLogin = true}, connection.Writer);
+            packageParser.ParsePackageToStream(new LoginResponse() {IsValidLogin = true}, connection.Writer);
         }
 
         [PackageHandler(PackageIds.CharacterClassRequest)]

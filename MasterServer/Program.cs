@@ -7,15 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace MasterServer {
     internal class Program {
         public static void Main(string[] args) {
-            var configurationService = ConfigurationService.CreateInstance(serviceDescriptors => {
-                serviceDescriptors.AddSingleton<IPackageParser, PackageParser>();
-                serviceDescriptors.AddSingleton<IPackageDispatcher, PackageDispatcher>();
-                
-                serviceDescriptors.AddScoped<ServerConnectionHandler>();
-                serviceDescriptors.AddSingleton<NetworkService>();
-            
-                serviceDescriptors.AddScoped<IUserRepository, UserRepository>();
-            });
+            var configurationService = ConfigurationService.CreateInstance();
             configurationService.Provider.GetRequiredService<NetworkService>().Start();
             configurationService.Provider.GetRequiredService<IPackageDispatcher>().Start();
             Console.ReadLine();

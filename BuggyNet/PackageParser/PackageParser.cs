@@ -35,12 +35,11 @@ namespace BuggyNet.PackageParser {
             var packageId = (PackageIds)reader.ReadUInt32();
             if (!packages.TryGetValue(packageId, out Type type))
                 throw new InvalidOperationException("Package is unknown");
-            if (Activator.CreateInstance(type) is BuggyNet.PackageParser.Package package) {
-                package.DeserialiseFromStream(reader);
-                logger.LogInformation($"Received package from stream: {package.GetType()}");
-                return package;
-            }
-            throw new InvalidOperationException("Package is unknown");
+            if (!(Activator.CreateInstance(type) is BuggyNet.PackageParser.Package package))
+                throw new InvalidOperationException("Package is unknown");
+            package.DeserialiseFromStream(reader);
+            logger.LogInformation($"Received package from stream: {package.GetType()}");
+            return package;
         }
 
         public void ParsePackageToStream(BuggyNet.PackageParser.Package package, BinaryWriter writer) {
