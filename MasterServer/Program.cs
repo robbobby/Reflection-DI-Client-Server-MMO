@@ -1,6 +1,7 @@
 ﻿using System;
 using BuggyNet.PackageParser;
 using MasterServer.Business;
+using MasterServer.Models.User;
 using MasterServer.Service;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,8 @@ namespace MasterServer {
             var configurationService = ConfigurationService.CreateInstance();
             configurationService.ServiceProvider.GetRequiredService<NetworkService>().Start();
             configurationService.ServiceProvider.GetRequiredService<IPackageDispatcher>().Start();
+            UserRepository x = (UserRepository) configurationService.ServiceProvider.GetService(typeof(IUserRepository));
+            x.UserExists("Somepassword", "Someusername");
             Console.ReadLine();
         }
     }

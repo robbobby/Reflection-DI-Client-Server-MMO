@@ -79,7 +79,7 @@ namespace MasterServer.Service {
                     await Task.Delay(1);
                     if (IsRunning)
                         lock (locker) {
-                            if (++receivePackageIterationCounter == 1000) {
+                            if (++receivePackageIterationCounter == 6000) {
                                 receivePackageIterationCounter = 0;
                                 foreach (var client in clients) {
                                     try {

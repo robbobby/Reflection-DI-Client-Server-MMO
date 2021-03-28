@@ -15,19 +15,21 @@ namespace MasterServer.Business {
         private readonly string connectionString;
         private IDbConnection connection => new MySqlConnection(connectionString);
         private readonly ILogger<IUserRepository> logger;
-        
+        private IConfiguration configuration;
+
         public UserRepository(IConfiguration configuration, ILogger<UserRepository> logger) {
-            // this.configuration = configuration;
+            this.configuration = configuration;
             this.logger = logger;
             connectionString = configuration.GetConnectionString("MySQL");
+            // connection.Open();
         }
 
         public UserModel GetUser(int id) {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         public List<UserModel> GetAllUsers() {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         public void AddUser(string username, string password, string emailAddress) {
@@ -40,15 +42,13 @@ namespace MasterServer.Business {
         }
 
         public void DeleteUser(int id) {
-            throw new System.NotImplementedException();
         }
 
         public void UpdateUser(UserModel user) {
-            throw new System.NotImplementedException();
         }
 
         public (bool success, IEnumerable<CharacterModel> charList) GetCharacterList(int userId) {
-            throw new System.NotImplementedException();
+            return (false, null);
         }
         
                         /* TODO: Combine PasswordOk and UserExists into 1 api call */
@@ -70,18 +70,20 @@ namespace MasterServer.Business {
         }
 
         public (bool, bool, int) UserExists(string username, string password) {
-            using (IDbConnection dbConnection = connection) {
-                const string query = @"SELECT * FROM User WHERE username=@username AND active='1'";
-                UserModel user = dbConnection.Query<UserModel>(query, new {Username = username}).FirstOrDefault();
-
-                if (user?.Username == null) {
-                    logger.LogInformation("Username doesn't exist");
-                    return (false, false, -1);
-                } else {
-                    logger.LogInformation("Username exists");
-                    return PasswordOk(user, password);
-                }
-            }
+        logger.LogCritical(connectionString);
+        using (IDbConnection dbConnection = connection) {
+            // const string query = @"SELECT * FROM User WHERE username=@username AND active='1'";
+        //         UserModel user = dbConnection.Query<UserModel>(query, new {Username = username}).FirstOrDefault();
+        //
+        //         if (user?.Username == null) {
+        //             logger.LogInformation("Username doesn't exist");
+        //             return (false, false, -1);
+        //         } else {
+        //             logger.LogInformation("Username exists");
+        //             return PasswordOk(user, password);
+        //         }
+        }
+        return (false, false, 1);
         }
         private (bool, bool, int) PasswordOk(UserModel user, string password) {
             bool validPassword = Encryption.ValidatePassword(password, user.Password);
@@ -92,6 +94,7 @@ namespace MasterServer.Business {
             }
             logger.LogInformation("Password is Incorrect");
             return (true, false, -1);
+        return (false, false, 1);
         }
     }
 }

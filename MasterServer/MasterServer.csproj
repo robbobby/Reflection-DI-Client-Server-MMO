@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
     <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -42,6 +43,14 @@
         </Reference>
         <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\packages\Dapper.2.0.78\lib\net461\Dapper.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <HintPath>..\Server\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <HintPath>..\Server\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
           <Private>True</Private>
         </Reference>
         <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604">
@@ -290,6 +299,7 @@
     <ItemGroup>
         <Compile Include="Business\IUserRepository.cs" />
         <Compile Include="Business\UserRepository.cs" />
+        <Compile Include="Business\UserRepositoryORM.cs" />
         <Compile Include="ConfigurationService.cs" />
         <Compile Include="Models\User\CharacterModel.cs" />
         <Compile Include="Models\User\UserModel.cs" />
@@ -303,6 +313,7 @@
         <Compile Include="Service\ServiceModels\ClientConnection.cs" />
     </ItemGroup>
     <ItemGroup>
+      <None Include="App.config" />
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
@@ -318,7 +329,10 @@
         <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
       </PropertyGroup>
       <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+      <Error Condition="!Exists('..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+      <Error Condition="!Exists('..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     </Target>
+    <Import Project="..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\Server\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">

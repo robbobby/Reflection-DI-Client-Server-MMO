@@ -31,8 +31,8 @@ public class ClientManager : MonoBehaviour {
             {Username = username, Password = password}, clientConnection.Writer);
         
         Debug.Log("Waiting to receive Login Response Package");
-        // Package packageData = packageParser.ParsePackageFromStream(clientConnection.Reader);
-        // Debug.Log($"Receive login response packages Type: {packageData.GetType()} RESULT: {(packageData as LoginResponse).IsValidLogin}");
+        Package packageData = packageParser.ParsePackageFromStream(clientConnection.Reader);
+        Debug.Log($"Receive login response packages Type: {packageData.GetType()} RESULT: {(packageData as LoginResponse).IsValidLogin}");
     }
 
     private void Start() {
