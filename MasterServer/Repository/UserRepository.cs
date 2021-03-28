@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,8 +21,7 @@ namespace MasterServer.Business {
         public UserRepository(IConfiguration configuration, ILogger<UserRepository> logger) {
             this.configuration = configuration;
             this.logger = logger;
-            connectionString = configuration.GetConnectionString("MySQL");
-            // connection.Open();
+            connectionString = configuration.GetConnectionString("RemoteMySQL");
         }
 
         public UserModel GetUser(int id) {
@@ -70,20 +70,20 @@ namespace MasterServer.Business {
         }
 
         public (bool, bool, int) UserExists(string username, string password) {
-        logger.LogCritical(connectionString);
-        using (IDbConnection dbConnection = connection) {
-            // const string query = @"SELECT * FROM User WHERE username=@username AND active='1'";
-        //         UserModel user = dbConnection.Query<UserModel>(query, new {Username = username}).FirstOrDefault();
-        //
-        //         if (user?.Username == null) {
-        //             logger.LogInformation("Username doesn't exist");
-        //             return (false, false, -1);
-        //         } else {
-        //             logger.LogInformation("Username exists");
-        //             return PasswordOk(user, password);
-        //         }
-        }
-        return (false, false, 1);
+            logger.LogCritical(connectionString);
+            using (IDbConnection dbConnection = connection) {
+                const string query = @"SELECT * FROM user WHERE username=@username AND activated='1'";
+                UserModel user = dbConnection.Query<UserModel>(query, new { Username = username }).FirstOrDefault();
+                if (user?.Username == null) {
+                    logger.LogInformation("Username doesn't exist");
+                    return (false, false, -1);
+                }
+                else {
+                    user.Password = Encryption.GetHashPassword(user.Password);
+                    logger.LogInformation("Username exists");
+                    return PasswordOk(user, password);
+                }
+            }
         }
         private (bool, bool, int) PasswordOk(UserModel user, string password) {
             bool validPassword = Encryption.ValidatePassword(password, user.Password);
@@ -94,7 +94,6 @@ namespace MasterServer.Business {
             }
             logger.LogInformation("Password is Incorrect");
             return (true, false, -1);
-        return (false, false, 1);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MasterServer {
             configurationService.ServiceProvider.GetRequiredService<NetworkService>().Start();
             configurationService.ServiceProvider.GetRequiredService<IPackageDispatcher>().Start();
             UserRepository x = (UserRepository) configurationService.ServiceProvider.GetService(typeof(IUserRepository));
-            x.UserExists("Somepassword", "Someusername");
+            Console.WriteLine(x.UserExists("Username", "Password"));
             Console.ReadLine();
         }
     }

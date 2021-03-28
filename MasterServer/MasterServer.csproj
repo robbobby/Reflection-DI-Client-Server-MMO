@@ -297,9 +297,9 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Business\IUserRepository.cs" />
-        <Compile Include="Business\UserRepository.cs" />
-        <Compile Include="Business\UserRepositoryORM.cs" />
+        <Compile Include="Repository\IUserRepository.cs" />
+        <Compile Include="Repository\UserRepository.cs" />
+        <Compile Include="Repository\UserRepositoryORM.cs" />
         <Compile Include="ConfigurationService.cs" />
         <Compile Include="Models\User\CharacterModel.cs" />
         <Compile Include="Models\User\UserModel.cs" />

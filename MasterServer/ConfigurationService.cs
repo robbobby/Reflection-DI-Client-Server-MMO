@@ -27,8 +27,9 @@ namespace MasterServer {
             return instance;
         }
         private static IServiceCollection CreateDefaultServiceDescriptors() {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("Config.json").Build();
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .AddJsonFile("PrivateConfig.json").AddJsonFile("Config.json").Build();
+            
             IServiceCollection serviceDescriptors = new ServiceCollection();
 
             serviceDescriptors.AddLogging(configure => configure.AddConsole());
