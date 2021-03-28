@@ -31,7 +31,7 @@ namespace MasterServer.Service {
         private readonly IPackageParser packageParser;
         private readonly IPackageDispatcher packageDispatcher;
         
-        public NetworkService(IConfigurationRoot config, ILogger<NetworkService> logger, IServiceProvider serviceProvider, 
+        public NetworkService(IConfiguration config, ILogger<NetworkService> logger, IServiceProvider serviceProvider, 
                 IPackageParser packageParser, IPackageDispatcher packageDispatcher) {
             tcpListener = new TcpListener(IPAddress.Parse(config.GetValue<string>("host")), config.GetValue<int>("port"));
             IsRunning = false;

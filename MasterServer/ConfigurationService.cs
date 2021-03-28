@@ -12,7 +12,7 @@ using ILogger = NLog.ILogger;
 
 namespace MasterServer {
     public class ConfigurationService {
-        public ServiceProvider Provider { get; private set; }
+        public ServiceProvider ServiceProvider { get; private set; }
         public static ConfigurationService CreateInstance() {
             return CreateInstance(s => {});
         }
@@ -23,7 +23,7 @@ namespace MasterServer {
             IServiceCollection descriptors = CreateDefaultServiceDescriptors();
 
             handler(descriptors);
-            instance.Provider = descriptors.BuildServiceProvider();
+            instance.ServiceProvider = descriptors.BuildServiceProvider();
             return instance;
         }
         private static IServiceCollection CreateDefaultServiceDescriptors() {
@@ -39,10 +39,9 @@ namespace MasterServer {
             serviceDescriptors.AddSingleton<NetworkService>();
             
             serviceDescriptors.AddSingleton<IUserRepository, UserRepository>();
-            serviceDescriptors.AddSingleton<IConfiguration>();
             
                 
-            serviceDescriptors.AddSingleton<IConfigurationRoot>(configuration);
+            serviceDescriptors.AddSingleton<IConfiguration>(configuration);
             return serviceDescriptors;
         }
         
