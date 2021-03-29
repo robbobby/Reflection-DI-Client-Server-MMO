@@ -83,7 +83,7 @@ namespace MasterServer.Service {
                                 receivePackageIterationCounter = 0;
                                 foreach (var client in clients) {
                                     try {
-                                        packageParser.ParsePackageToStream(new KeepAlivePackage(), client.Writer);
+                                        // packageParser.ParsePackageToStream(new KeepAlivePackage(), client.Writer);
                                     }
                                     catch (Exception e) {
                                         invalidConnections.Add(client); // TODO: Set this to use time and keep alive every 5/6 seconds

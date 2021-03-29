@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using DefaultNamespace;
 using Microsoft.Extensions.DependencyInjection;
 using TMPro;
@@ -11,28 +12,28 @@ public class ClientManager : MonoBehaviour {
     [SerializeField] private TMP_InputField passwordInput;
     [SerializeField] private TMP_Text characterClassIdField;
 
-    private readonly IPackageParser packageParser;
     private readonly ClientConnection clientConnection;
+    private readonly ClientConnectionDispatcher connectionDispatcher;
     private readonly MenuManager menuManager;
 
     public ClientManager() {
         clientConnection = GameContext.ServiceProvider.GetRequiredService<ClientConnection>();
-        packageParser = GameContext.ServiceProvider.GetRequiredService<IPackageParser>();
+        connectionDispatcher = GameContext.ServiceProvider.GetRequiredService<ClientConnectionDispatcher>();
     }
 
     public void Execute() {
         Debug.Log("Build Connection");
         MenuManager menuManager = GetComponentInChildren<MenuManager>(true);
         clientConnection.Connect("127.0.0.1", 3456);
+        connectionDispatcher.Start();
         string username = usernameInput.text;
         string password = passwordInput.text;
-        
-        packageParser.ParsePackageToStream(new LoginRequest() 
-            {Username = username, Password = password}, clientConnection.Writer);
+
+        connectionDispatcher.SendPackage(new LoginRequest() { Username = username, Password = password });
         
         Debug.Log("Waiting to receive Login Response Package");
-        Package packageData = packageParser.ParsePackageFromStream(clientConnection.Reader);
-        Debug.Log($"Receive login response packages Type: {packageData.GetType()} RESULT: {(packageData as LoginResponse).IsValidLogin}");
+        LoginResponse packageData = connectionDispatcher.WaitForPackage<LoginResponse>().Result; // TODO: automate this
+        LogPackageResponse(packageData, packageData.IsValidLogin);
     }
 
     private void Start() {
@@ -49,13 +50,11 @@ public class ClientManager : MonoBehaviour {
     public void CharacterClass() {
         Debug.Log("Writer character package");
         const int characterId = 1;
-        packageParser.ParsePackageToStream(
-            new CharacterClass() {CharacterClassId = characterId}, clientConnection.Writer);
+        connectionDispatcher.SendPackage(new CharacterClass() {CharacterClassId = characterId});
         
         Debug.Log("Receive CharacterClass Response package");
-        CharacterClassResponse packageData = (CharacterClassResponse) packageParser.ParsePackageFromStream(clientConnection.Reader);
-        Debug.Log($"Received CharacterClassResponse package TYPE:{packageData.GetType()} Result: {packageData.CharacterClassId}");
-        characterClassIdField.text = packageData.CharacterClassId.ToString();
+        CharacterClassResponse packageData = connectionDispatcher.WaitForPackage<CharacterClassResponse>().Result;
+        LogPackageResponse(packageData, packageData.CharacterClassId);
 
         bool charExists = false;
         MenuManager menuManager = GetComponentInChildren<MenuManager>(true);
@@ -65,6 +64,10 @@ public class ClientManager : MonoBehaviour {
             menuManager.CharacterCreationMenu();
         }
     }
-    
-    
+    private static void LogPackageResponse<T>(Package packageData, T dataToLog) {
+
+        Debug.Log($"Received package from server Type{packageData.PackageId} RESULT: {dataToLog}");
+    }
+
+
 }

@@ -10,6 +10,7 @@ public static class GameContext {
         ConfigService = ConfigurationService.CreateInstance(serverConfiguration => {
             serverConfiguration.AddSingleton<IPackageParser, PackageParser>();
             serverConfiguration.AddSingleton<ClientConnection>();
+            serverConfiguration.AddSingleton<ClientConnectionDispatcher>();
         });
     }
 

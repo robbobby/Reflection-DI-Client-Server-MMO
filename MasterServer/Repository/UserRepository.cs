@@ -14,7 +14,7 @@ namespace MasterServer.Business {
 
         // private readonly IConfiguration configuration;
         private readonly string connectionString;
-        private IDbConnection connection => new MySqlConnection(connectionString);
+        private IDbConnection connection => new MySqlConnection(Program.UserDbConnectionString);
         private readonly ILogger<IUserRepository> logger;
         private IConfiguration configuration;
 

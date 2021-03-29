@@ -35,7 +35,7 @@ namespace MasterServer {
             serviceDescriptors.AddLogging(configure => configure.AddConsole());
             serviceDescriptors.AddSingleton<IPackageParser, PackageParser>();
             serviceDescriptors.AddSingleton<IPackageDispatcher, PackageDispatcher>();
-                
+
             serviceDescriptors.AddScoped<ServerConnectionHandler>();
             serviceDescriptors.AddSingleton<NetworkService>();
             

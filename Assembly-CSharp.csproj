@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\ClientConnection.cs" />
      <Compile Include="Assets\Scripts\ClientManager.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\ClientConnectionDispatcher.cs" />
      <None Include="Assets\DEPS\Microsoft.Extensions.FileProviders.Physical.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\DEPS\System.ValueTuple.xml" />
